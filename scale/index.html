@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>스케일 조정</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap");
+
+      * {
+        font-family: "Noto Sans KR", sans-serif;
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        padding: 0;
+        background: url("images/railroad-4566899_1920.jpg") no-repeat center;
+        background-size: cover;
+        font-size: 17px;
+      }
+      ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      p {
+        display: block;
+        margin: 0;
+        padding: 0;
+      }
+      .table_body {
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.3);
+        position: relative;
+        overflow: hidden;
+      }
+
+      a {
+        text-decoration: none;
+      }
+
+      .table_body_inner {
+        width: 1280px;
+        height: 720px;
+        background: #fff;
+        border: 1px solid #222;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .table_body_inner_flex_inner {
+        width: 100%;
+      }
+
+      .table_body_inner .table_body_inner_flex_inner h1 {
+        font-size: 24px;
+        margin-bottom: 15px;
+        text-align: center;
+      }
+
+      .all_module_side {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .all_module_side > div {
+        width: calc(50% - 20px);
+        border: 1px solid #ededed;
+        border-radius: 20px;
+        padding: 30px;
+      }
+
+      .button_side {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .press_button {
+        background: red;
+        border: none;
+        width: 200px;
+        height: 50px;
+        color: #fff;
+        border-radius: 25px;
+        font-size: 24px;
+        cursor: pointer;
+      }
+
+      .press_button:hover {
+        background: #422455;
+      }
+
+      .train_sliding {
+        width: 300px;
+        margin-left: -250px;
+      }
+
+      .train_sliding img {
+        width: 100%;
+      }
+
+      .sliding_side {
+        overflow: hidden;
+      }
+    </style>
+
+    <section class="table_body">
+      <div class="table_body_inner">
+        <div class="table_body_inner_flex_inner">
+          <h1>버튼을 눌러서 기차를 움직여 보세요.</h1>
+          <div class="all_module_side">
+            <div class="button_side">
+              <button
+                class="press_button"
+                onclick="trainSlide()"
+                title="기차 움직이기"
+              >
+                PRESS
+              </button>
+            </div>
+            <div class="sliding_side">
+              <div class="train_sliding">
+                <img
+                  src="images/locomotive-7709871_1280.png"
+                  alt="이동하는 기차"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+
+  <script>
+    function scaleManage() {
+      var scaleX = $(".table_body_inner").innerWidth();
+      var scaleY = $(".table_body_inner").innerHeight();
+
+      var wSclaeX = $(window).width();
+      var wSclaeY = $(window).height();
+
+      scaleX = 1280;
+      scaleY = scaleX * 0.5625;
+
+      if (wSclaeX <= 1280) {
+        scaleX = wSclaeX * 0.9;
+        scaleY = scaleX * 0.5625;
+      }
+
+      $(".table_body_inner").css("width", scaleX);
+      $(".table_body_inner").css("height", scaleY);
+    }
+
+    scaleManage();
+
+    $(window).resize(function () {
+      scaleManage();
+    });
+
+    function trainSlide() {
+      $(".train_sliding").animate(
+        {
+          marginLeft: "100%",
+        },
+        2000
+      );
+    }
+  </script>
+</html>
