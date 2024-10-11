@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>드래그 앤 드롭</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.14.0/jquery-ui.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
+  </head>
+  <body>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap");
+
+      * {
+        font-family: "Noto Sans KR", sans-serif;
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        padding: 0;
+        background: url("images/19648.png") no-repeat center;
+        background-size: cover;
+        font-size: 17px;
+      }
+      ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      p {
+        display: block;
+        margin: 0;
+        padding: 0;
+      }
+      .table_body {
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.3);
+        position: relative;
+      }
+      a {
+        text-decoration: none;
+      }
+
+      .drag_and_drop_area {
+        background: #fff;
+        width: 90vw;
+        max-width: 787px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 30px;
+        border-radius: 15px;
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .drag_case,
+      .drop_case {
+        padding: 30px;
+        border: 1px solid #dedede;
+        width: calc(50% - 30px);
+      }
+
+      .drag {
+        padding: 10px;
+        background: red;
+        color: #fff;
+        border-radius: 20px;
+        text-align: center;
+        cursor: pointer;
+      }
+
+      .drag.static {
+        position: static !important;
+        background: green !important;
+      }
+
+      .drag.cornflowerblue {
+        background: cornflowerblue;
+      }
+    </style>
+
+    <section class="table_body">
+      <div class="drag_and_drop_area">
+        <div class="drag_case">
+          <div class="drag">Drag me in to the box</div>
+        </div>
+        <div class="drop_case"></div>
+      </div>
+    </section>
+  </body>
+
+  <script>
+    $(function () {
+      $(".drag").draggable({
+        drag: function (event, ui) {
+          $(this).addClass("cornflowerblue");
+        },
+      });
+
+      $(".drop_case").droppable({
+        drop: function (event, ui) {
+          var cloneDrag = $(".ui-draggable-dragging").clone();
+          $(this).append(cloneDrag);
+          cloneDrag.addClass("static");
+          $(".drag_case .drag").remove();
+        },
+      });
+    });
+  </script>
+</html>
