@@ -60,10 +60,10 @@
       }
 
       .cell.upper_return > div {
-        font-size: 0;
         text-align: right;
         margin-bottom: 10px;
         position: relative;
+        cursor: pointer;
       }
 
       .cell.upper_return > div:after {
@@ -74,7 +74,7 @@
         border-left: 5px solid transparent;
         border-right: 5px solid transparent;
         position: absolute;
-        bottom: 0;
+        top: 20px;
         right: -3px;
       }
 
@@ -122,6 +122,22 @@
         border: none;
         display: inline-block;
       }
+
+      .bubble_emo {
+        justify-content: flex-end;
+        display: none;
+      }
+
+      .emoji .bubble_emo {
+        display: flex;
+      }
+
+      .emoji_chosen li {
+        display: none;
+      }
+      .emoji_chosen li.chosen {
+        display: block;
+      }
     </style>
 
     <script>
@@ -129,12 +145,29 @@
         var thisText = document.getElementById("sending_text").value;
         var thisContainer = document.querySelector(".upper_return");
         var thisBubble = document.createElement("div");
-        thisBubble.innerHTML = "<p>" + thisText + "</p>";
+
+        thisBubble.innerHTML =
+          "<p>" +
+          thisText +
+          "</p>" +
+          "<ul class='bubble_emo'><li class='chose_emoji'>😍</li><li class='chose_emoji'>😊</li><li class='chose_emoji'>😝</li><li class='chose_emoji'>🖐️</li><li class='chose_emoji'>😭</li><li class='chose_emoji'>😥</li></ul>";
 
         thisContainer.append(thisBubble);
         if (thisText == "♡") {
           thisBubble.classList.add("no_bubble");
         }
+
+        thisBubble.onclick = function () {
+          this.classList.add("emoji");
+        };
+
+        var thisEmo = document.querySelectorAll(".chose_emoji");
+        thisEmo.forEach(function (e, i) {
+          e.onclick = function () {
+            this.classList.add("chosen");
+            this.parentElement.classList.add("emoji_chosen");
+          };
+        });
 
         love_for_a_aesthetic.onsubmit = function (e) {
           e.preventDefault();
