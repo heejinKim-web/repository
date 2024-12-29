@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Color Flipper || Simple</title>
+
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      .container {
+        text-align: center;
+      }
+
+      .popup {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: rgba(0, 0, 0, 0.4);
+        z-index: 10;
+        display: none;
+      }
+
+      .popup-relative {
+        position: relative;
+        width: 100%;
+        height: 100%;
+      }
+
+      .popup-absolute {
+        width: 90vw;
+        max-width: 700px;
+        background: #fff;
+        padding: 20px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      .popup-content-inner {
+        position: relative;
+      }
+
+      .popup-close {
+        appearance: none;
+        background: none;
+        font-size: 30px;
+        border: none;
+        position: absolute;
+        top: 30px;
+        right: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div class="container">
+        <button class="popup-open" id="openPopup1">팝업열기1</button>
+        <button class="popup-open" id="openPopup2">팝업열기2</button>
+        <button class="popup-open" id="openPopup3">팝업열기3</button>
+      </div>
+
+      <div class="popup openPopup1">
+        <div class="popup-relative">
+          <div class="popup-absolute">
+            <div class="popup-content">
+              <div class="popup-content-inner">
+                <p>팝업 내용1</p>
+              </div>
+              <button class="popup-close">&times;</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="popup openPopup2">
+        <div class="popup-relative">
+          <div class="popup-absolute">
+            <div class="popup-content">
+              <div class="popup-content-inner">
+                <p>팝업 내용2</p>
+              </div>
+              <button class="popup-close">&times;</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="popup openPopup3">
+        <div class="popup-relative">
+          <div class="popup-absolute">
+            <div class="popup-content">
+              <div class="popup-content-inner">
+                <p>팝업 내용3</p>
+              </div>
+              <button class="popup-close">&times;</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script>
+      const popOpen = document.querySelectorAll(".popup-open");
+      const openPopup = document.querySelectorAll(".popup");
+      const popupClose = document.querySelectorAll(".popup-close");
+
+      popOpen.forEach(function (pOpen) {
+        pOpen.addEventListener("click", function (e) {
+          let gAtr = e.currentTarget.getAttribute("id");
+
+          const openPopup = document.querySelector("." + gAtr);
+          openPopup.style.display = "block";
+        });
+      });
+
+      popupClose.forEach(function (pClose) {
+        pClose.addEventListener("click", function (e) {
+          const parentPop =
+            e.currentTarget.parentNode.parentNode.parentNode.parentNode;
+          parentPop.style.display = "none";
+        });
+      });
+    </script>
+  </body>
+</html>
