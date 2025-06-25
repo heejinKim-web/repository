@@ -114,6 +114,12 @@
           $(".go").css("background-color", "#6a0a8a");
         }
       }
+
+      function keyPressChange(e) {
+        if (e.keycode == "13") {
+          colorChange();
+        }
+      }
     </script>
 
     <section class="table_body">
@@ -123,7 +129,12 @@
             <ul class="world_input_list">
               <li>
                 <span>The Color is</span>
-                <input type="text" name="Is" class="color_input" />
+                <input
+                  type="text"
+                  name="Is"
+                  class="color_input"
+                  onkeydown="keyPressChange(this)"
+                />
               </li>
             </ul>
             <button class="go" id="go" onclick="colorChange()">
