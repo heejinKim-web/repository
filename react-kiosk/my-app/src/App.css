@@ -73,6 +73,7 @@ a {
   height: 100%;
   border: none;
   text-align: left;
+  padding: 0;
 }
 
 .menu_list ul li button span.price {

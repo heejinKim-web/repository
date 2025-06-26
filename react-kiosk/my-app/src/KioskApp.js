@@ -16,10 +16,10 @@ const KioskApp = () => {
     },
   ];
 
-  const [itemShow, setItemShow] = useState("");
+  const [itemIndex, setItemIndex] = useState("");
 
   const settingItemShow = (num) => {
-    setItemShow(num);
+    setItemIndex(num);
   };
 
   return (
@@ -45,10 +45,12 @@ const KioskApp = () => {
               {dataMenu.map((dataMenu, index) => (
                 <li
                   key={index}
-                  style={{ display: itemShow === index ? "block" : "none" }}
+                  style={{
+                    display: itemIndex === index ? "block" : "none",
+                  }}
                 >
                   <div className="amount_button_and_menu_name">
-                    <p className="menu_name"></p>
+                    <p className="menu_name">{dataMenu.name}</p>
                     <div className="price_and_amount">
                       <p className="price_bot">
                         <em>{dataMenu.price.toLocaleString()}</em>원
