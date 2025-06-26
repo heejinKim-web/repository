@@ -16,7 +16,11 @@ const KioskApp = () => {
     },
   ];
 
-  const [items, setItems] = useState([{ price: "", minusplus: "" }]);
+  const [itemShow, setItemShow] = useState("");
+
+  const settingItemShow = (num) => {
+    setItemShow(num);
+  };
 
   return (
     <>
@@ -25,11 +29,10 @@ const KioskApp = () => {
           <div className="menu_list">
             <ul>
               {dataMenu.map((dataMenu, index) => (
-                <li key={index}>
+                <li key={index} onClick={() => settingItemShow(index)}>
                   <button>
                     <span className="name">{dataMenu.name}</span>
                     <span className="price">
-                      <input type="hidden" value={dataMenu.price}></input>
                       <em>{dataMenu.price.toLocaleString()}</em>원
                     </span>
                   </button>
@@ -39,23 +42,23 @@ const KioskApp = () => {
           </div>
           <div className="amount_list">
             <ul>
-              {items.map((item, index) => (
+              {dataMenu.map((dataMenu, index) => (
                 <li
                   key={index}
-                  style={{ display: item.price ? "block" : "none" }}
+                  style={{ display: itemShow === index ? "block" : "none" }}
                 >
-                  <div class="amount_button_and_menu_name">
-                    <p class="menu_name"></p>
-                    <div class="price_and_amount">
-                      <p class="price_bot">
-                        <em>{items.price}</em>원
+                  <div className="amount_button_and_menu_name">
+                    <p className="menu_name"></p>
+                    <div className="price_and_amount">
+                      <p className="price_bot">
+                        <em>{dataMenu.price.toLocaleString()}</em>원
                       </p>
-                      <div class="amount_button_frame">
-                        <button class="minus" title="수량 감소">
+                      <div className="amount_button_frame">
+                        <button className="minus" title="수량 감소">
                           -
                         </button>
-                        <p class="amount_count"></p>
-                        <button class="plus" title="수량 증가">
+                        <p className="amount_count">0</p>
+                        <button className="plus" title="수량 증가">
                           +
                         </button>
                       </div>
