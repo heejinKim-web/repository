@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import classnames from "classnames";
 
 const KioskApp = () => {
   const dataMenu = [
@@ -17,9 +18,18 @@ const KioskApp = () => {
   ];
 
   const [itemIndex, setItemIndex] = useState("");
+  const [amount, setAmount] = useState(0);
 
   const settingItemShow = (num) => {
     setItemIndex(num);
+  };
+
+  const setAmountPlus = () => {
+    setAmount(amount + 1);
+  };
+
+  const setAmountMinus = () => {
+    setAmount(amount - 1);
   };
 
   return (
@@ -45,22 +55,30 @@ const KioskApp = () => {
               {dataMenu.map((dataMenu, index) => (
                 <li
                   key={index}
-                  style={{
-                    display: itemIndex === index ? "block" : "none",
-                  }}
+                  className={classnames(
+                    itemIndex === index ? "item item-show" : ""
+                  )}
                 >
                   <div className="amount_button_and_menu_name">
                     <p className="menu_name">{dataMenu.name}</p>
                     <div className="price_and_amount">
                       <p className="price_bot">
-                        <em>{dataMenu.price.toLocaleString()}</em>원
+                        <em>{(dataMenu.price * amount).toLocaleString()}</em>원
                       </p>
                       <div className="amount_button_frame">
-                        <button className="minus" title="수량 감소">
+                        <button
+                          className="minus"
+                          title="수량 감소"
+                          onClick={() => setAmountMinus()}
+                        >
                           -
                         </button>
-                        <p className="amount_count">0</p>
-                        <button className="plus" title="수량 증가">
+                        <p className="amount_count">{amount}</p>
+                        <button
+                          className="plus"
+                          title="수량 증가"
+                          onClick={() => setAmountPlus()}
+                        >
                           +
                         </button>
                       </div>
