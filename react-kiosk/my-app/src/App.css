@@ -93,14 +93,6 @@ a {
   padding: 0 30px;
 }
 
-.amount_list ul li {
-  display: none;
-}
-
-.amount_list ul li.item-show {
-  display: block;
-}
-
 .amount_button_and_menu_name {
   display: flex;
   justify-content: space-between;
