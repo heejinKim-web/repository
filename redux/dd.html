@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>희진 감정 리덕스 시뮬레이터</title>
+    <style>
+      body {
+        font-family: "Arial", sans-serif;
+        background-color: #f9f9f9;
+        padding: 2rem;
+        max-width: 700px;
+        margin: auto;
+      }
+      h1 {
+        text-align: center;
+      }
+      .log {
+        background: #eee;
+        padding: 1rem;
+        border-radius: 8px;
+        height: 250px;
+        overflow-y: auto;
+        margin-bottom: 1rem;
+      }
+      button {
+        margin: 0.25rem;
+        padding: 0.5rem 1rem;
+        font-size: 1rem;
+      }
+
+      .guagebar {
+        display: block;
+        background: firebrick;
+        height: 2rem;
+        position: relative;
+      }
+
+      .guagebar_h {
+        display: block;
+        background: cornflowerblue;
+        height: 2rem;
+        position: relative;
+      }
+
+      .guagepercent {
+        color: firebrick;
+        position: absolute;
+        top: -1.5rem;
+        right: 5rem;
+      }
+
+      .gauge_status {
+        color: firebrick;
+        position: absolute;
+        top: -1.5rem;
+        right: 0;
+      }
+
+      .guagepercent_h {
+        color: cornflowerblue;
+        position: absolute;
+        top: -1.5rem;
+        right: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>희진 감정 Redux 시뮬레이터</h1>
+    <div class="log" id="log">
+      <div class="guage">
+        <p>희진</p>
+        <span class="guagebar">
+          <span class="guagepercent"> 65% </span>
+          <span class="gauge_status"></span>
+        </span>
+      </div>
+      <div class="guage_h">
+        <p>한얼</p>
+        <span class="guagebar_h">
+          <span class="guagepercent_h">80%</span>
+        </span>
+      </div>
+      <div class="status_div">
+        <div class="heejin_status">
+          <p>희진</p>
+          <ul>
+            <li id="state">상태 : <span class="state_text"></span></li>
+            <li id="recovery">회복 : <span class="recovery_text"></span></li>
+            <li id="symbol">인형 : <span class="symbol_text"></span></li>
+          </ul>
+        </div>
+        <div class="haneol_status">
+          <p>한얼</p>
+          <ul>
+            <li id="name">이름 : <span class="name_text"></span></li>
+            <li id="trust">믿음 : <span class="trust_text"></span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div>
+      <button onclick="dispatch({ type: 'RECONCILE' })">관계 회복 시도</button>
+      <button onclick="dispatch({ type: 'EXTERNAL_INTERFERENCE' })">
+        외부 간섭
+      </button>
+      <button onclick="dispatch({ type: 'EMOTION_RECOVERY' })">
+        감정 회복
+      </button>
+      <button onclick="printState()">상태 보기</button>
+    </div>
+
+    <script>
+      const ActionTypes = {
+        RECONCILE: "RECONCILE",
+        EXTERNAL_INTERFERENCE: "EXTERNAL_INTERFERENCE",
+        EMOTION_RECOVERY: "EMOTION_RECOVERY",
+      };
+
+      const initialState = {
+        heejin: {
+          state: "recovering",
+          recoveryProgress: 0.65,
+          symbolicObjects: { chilgai: "preserved" },
+          safeZone: "Haneol",
+          contactStatus: { kakao: true, phone: true },
+          externalStress: 0.2,
+          internalLog: [],
+        },
+        haneol: {
+          name: "Haneol",
+          trust: 0.8,
+          emotionalAnchor: false,
+        },
+      };
+
+      let state = initialState;
+
+      function reducer(state, action) {
+        const { heejin, haneol } = state;
+        switch (action.type) {
+          case ActionTypes.RECONCILE:
+            if (
+              heejin.state === "recovering" &&
+              heejin.safeZone === haneol.name &&
+              heejin.contactStatus.kakao &&
+              heejin.contactStatus.phone &&
+              heejin.externalStress < 0.3
+            ) {
+              const newRecovery = heejin.recoveryProgress + 0.15;
+              return {
+                ...state,
+                heejin: {
+                  ...heejin,
+                  recoveryProgress: newRecovery,
+                  state: newRecovery >= 0.9 ? "healed" : "stabilizing",
+                  internalLog: [...heejin.internalLog, "RECONCILED via Redux"],
+                },
+                haneol: {
+                  ...haneol,
+                  trust: haneol.trust + 0.1,
+                },
+              };
+            }
+            return state;
+
+          case ActionTypes.EXTERNAL_INTERFERENCE:
+            return {
+              ...state,
+              heejin: {
+                ...heejin,
+                state: "regressing",
+                recoveryProgress: heejin.recoveryProgress - 0.2,
+                externalStress: heejin.externalStress + 0.2,
+                internalLog: [...heejin.internalLog, "EXTERNAL INTERFERENCE"],
+              },
+            };
+
+          case ActionTypes.EMOTION_RECOVERY:
+            return {
+              ...state,
+              heejin: {
+                ...heejin,
+                state: "recovering",
+                recoveryProgress: heejin.recoveryProgress + 0.1,
+                internalLog: [...heejin.internalLog, "EMOTIONAL SUPPORT"],
+              },
+            };
+
+          default:
+            return state;
+        }
+      }
+
+      function dispatch(action) {
+        state = reducer(state, action);
+        updateStatus();
+      }
+
+      const heejinGauge = document.querySelector(".guagebar");
+      const heejinGaugePercent = document.querySelector(".guagepercent");
+      const heejinGuageText = document.querySelector(".gauge_status");
+
+      const haneolGauge = document.querySelector(".guagebar_h");
+      const haneolGaugePercent = document.querySelector(".guagepercent_h");
+
+      function updateStatus() {
+        const { heejin, haneol } = state;
+
+        heejinGauge.style.width = heejin.recoveryProgress * 100 + "%";
+        heejinGaugePercent.textContent = heejin.recoveryProgress * 100 + "%";
+        heejinGuageText.textContent = heejin.state;
+        haneolGauge.style.width = haneol.trust * 100 + "%";
+        haneolGaugePercent.textContent = haneol.trust * 100 + "%";
+      }
+
+      const stateEl = document.querySelector(".state_text");
+      const recoveryEl = document.querySelector(".recovery_text");
+      const symbolEl = document.querySelector(".symbol_text");
+
+      const nameEl = document.querySelector(".name_text");
+      const trustEl = document.querySelector(".trust_text");
+
+      function printState() {
+        const { heejin } = state;
+        const { haneol } = state;
+
+        stateEl.textContent = heejin.state;
+        recoveryEl.textContent = heejin.recoveryProgress * 100 + "%";
+        symbolEl.textContent = heejin.symbolicObjects.chilgai;
+
+        nameEl.textContent = haneol.name;
+        trustEl.textContent = haneol.trust * 100 + "%";
+
+        // console.log(`\n📌 상태 출력:\n${JSON.stringify(state, null, 2)}`);
+      }
+
+      updateStatus();
+    </script>
+  </body>
+</html>
