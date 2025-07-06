@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Signal Light</title>
+  </head>
+  <body>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        padding: 0;
+        margin: 0;
+      }
+
+      .table_body {
+        padding: 20px;
+      }
+
+      .signal-light-frame .signal-buttons {
+        margin-bottom: 20px;
+      }
+
+      .signal-light-frame .signal-buttons button {
+        background: lightgray;
+        color: black;
+        display: inline-block;
+        padding: 5px 10px;
+        appearance: none;
+        border: none;
+        border-radius: 2.5px;
+        font-size: 17px;
+        cursor: pointer;
+      }
+
+      .signal-light-frame .signal-buttons button:hover,
+      .signal-light-frame .signal-buttons button.on {
+        background: blue;
+        color: white;
+      }
+
+      .signal-light {
+        padding: 10px;
+        background: black;
+        border-radius: 5px;
+        width: 90px;
+      }
+
+      .signal-light .light {
+        width: 70px;
+        height: 70px;
+        background: gray;
+        border-radius: 50%;
+        margin-bottom: 10px;
+      }
+
+      .signal-light .light.red {
+        background: red;
+      }
+
+      .signal-light .light:last-child {
+        margin-bottom: 0;
+      }
+    </style>
+
+    <section class="table_body">
+      <div class="signal-light-frame">
+        <div class="signal-buttons">
+          <button class="signal-start">시작</button>
+          <button class="signal-finish">끝</button>
+        </div>
+        <div class="signal-light">
+          <div class="light red"></div>
+          <div class="light green"></div>
+          <div class="light yellow"></div>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      const signalLightFunction = () => {
+        const redLight = document.querySelector(".red");
+        const greenLight = document.querySelector(".green");
+        const yellowLight = document.querySelector(".yellow");
+
+        setTimeout(function () {
+          redLight.style.backgroundColor = "red";
+          greenLight.style.backgroundColor = "gray";
+          yellowLight.style.backgroundColor = "gray";
+
+          console.log("red");
+        }, 0);
+
+        setTimeout(function () {
+          redLight.style.backgroundColor = "gray";
+          greenLight.style.backgroundColor = "green";
+          yellowLight.style.backgroundColor = "gray";
+
+          console.log("green");
+        }, 2000);
+
+        setTimeout(function () {
+          redLight.style.backgroundColor = "gray";
+          greenLight.style.backgroundColor = "gray";
+          yellowLight.style.backgroundColor = "yellow";
+
+          console.log("yellow");
+        }, 4000);
+      };
+
+      let signalInterval;
+      function setTimer() {
+        signalLightFunction();
+        signalInterval = setInterval(signalLightFunction, 6000);
+      }
+
+      function stopTimer() {
+        clearInterval(signalInterval);
+      }
+
+      const startButton = document.querySelector(".signal-start");
+      const finishButton = document.querySelector(".signal-finish");
+
+      startButton.addEventListener("click", function () {
+        setTimer();
+        startButton.classList.add("on");
+        finishButton.classList.remove("on");
+      });
+
+      finishButton.addEventListener("click", function () {
+        stopTimer();
+        startButton.classList.remove("on");
+        finishButton.classList.add("on");
+        setTimeout(function () {
+          finishButton.classList.remove("on");
+        }, 1500);
+      });
+    </script>
+  </body>
+</html>
