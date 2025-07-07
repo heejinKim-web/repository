@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import ItemAmount from "./utils/ItemAmount";
 
 const KioskApp = () => {
   const dataMenu = [
@@ -8,7 +9,6 @@ const KioskApp = () => {
   ];
 
   const [menus, setMenus] = useState([]);
-  const [amount, setAmount] = useState(1);
 
   const onClick = (iname, iprice, iid) => {
     const nextMenu = menus.concat({
@@ -18,44 +18,6 @@ const KioskApp = () => {
     });
     setMenus(nextMenu);
   };
-
-  const setAmountPlus = (e) => {
-    setAmount(amount + 1);
-  };
-
-  const setAmountMinus = (e) => {
-    setAmount(amount - 1);
-  };
-
-  const menusList = menus.map((menu, index) => (
-    <li key={index}>
-      <div className="amount_button_and_menu_name">
-        <p className="menu_name">{menu.name}</p>
-        <div className="price_and_amount">
-          <p className="price_bot">
-            <em>{(menu.price * amount).toLocaleString()}</em>원
-          </p>
-          <div className="amount_button_frame">
-            <button
-              className="minus"
-              title="수량 감소"
-              onClick={() => setAmountMinus(this)}
-            >
-              -
-            </button>
-            <p className="amount_count">{amount}</p>
-            <button
-              className="plus"
-              title="수량 증가"
-              onClick={() => setAmountPlus(this)}
-            >
-              +
-            </button>
-          </div>
-        </div>
-      </div>
-    </li>
-  ));
 
   return (
     <>
@@ -79,7 +41,16 @@ const KioskApp = () => {
             </ul>
           </div>
           <div className="amount_list">
-            <ul>{menusList}</ul>
+            <ul>
+              {menus.map((menu, index) => (
+                <li key={index}>
+                  <div className="amount_button_and_menu_name">
+                    <p className="menu_name">{menu.name}</p>
+                    <ItemAmount menu={menu} />
+                  </div>
+                </li>
+              ))}
+            </ul>
           </div>
           <div className="order_button_frame">
             <button title="상품 전체 주문" className="order_button">
