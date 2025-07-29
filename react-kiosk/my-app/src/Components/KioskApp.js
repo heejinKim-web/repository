@@ -18,6 +18,16 @@ const KioskApp = () => {
     setMenus(nextMenu);
   };
 
+  const [totalPrice, setTotalPrice] = useState(0);
+  const onSum = () => {
+    let sumPrice = 0;
+    for (let i = 0; i < menus.length; i++) {
+      sumPrice += menus[i].price;
+    }
+    setTotalPrice(sumPrice);
+    console.log(sumPrice);
+  };
+
   return (
     <>
       <section className="table_body">
@@ -47,13 +57,17 @@ const KioskApp = () => {
             </ul>
           </div>
           <div className="order_button_frame">
-            <button title="상품 전체 주문" className="order_button">
+            <button
+              title="상품 전체 주문"
+              className="order_button"
+              onClick={onSum}
+            >
               주문하기
             </button>
           </div>
           <div className="total_price">
             <p className="total">
-              총 <span>0</span>원
+              총 <span>{totalPrice.toLocaleString()}</span>원
             </p>
           </div>
         </div>
