@@ -1,5 +1,5 @@
 import "./App.css";
-import KioskApp from "./KioskApp";
+import KioskApp from "./Components/KioskApp";
 
 function App() {
   return <KioskApp />;

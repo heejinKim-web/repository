@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import ItemAmount from "./utils/ItemAmount";
+import KioskAppItemList from "./KioskAppItemList";
 
 const KioskApp = () => {
   const dataMenu = [
@@ -9,7 +9,6 @@ const KioskApp = () => {
   ];
 
   const [menus, setMenus] = useState([]);
-
   const onClick = (iname, iprice, iid) => {
     const nextMenu = menus.concat({
       name: iname,
@@ -25,9 +24,9 @@ const KioskApp = () => {
         <div className="body_menu_and_amount">
           <div className="menu_list">
             <ul>
-              {dataMenu.map((menu, index) => (
+              {dataMenu.map((menu) => (
                 <li
-                  key={index}
+                  key={menu.id}
                   onClick={() => onClick(menu.name, menu.price, menu.id)}
                 >
                   <button>
@@ -42,13 +41,8 @@ const KioskApp = () => {
           </div>
           <div className="amount_list">
             <ul>
-              {menus.map((menu, index) => (
-                <li key={index}>
-                  <div className="amount_button_and_menu_name">
-                    <p className="menu_name">{menu.name}</p>
-                    <ItemAmount menu={menu} />
-                  </div>
-                </li>
+              {menus.map((menu) => (
+                <KioskAppItemList key={menu.id} menu={menu} />
               ))}
             </ul>
           </div>
