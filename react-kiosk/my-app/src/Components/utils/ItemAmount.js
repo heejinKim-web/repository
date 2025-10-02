@@ -6,7 +6,8 @@ const ItemAmount = ({ menu, itemAmount, plusItemAmount, minusItemAmount }) => {
   return (
     <div className="price_and_amount">
       <p className="price_bot">
-        <em>{(price * itemAmount).toLocaleString()}</em>원
+        <em className="itemAmount">{(price * itemAmount).toLocaleString()}</em>
+        원
       </p>
       <div className="amount_button_frame">
         <button className="minus" title="수량 감소" onClick={minusItemAmount}>
