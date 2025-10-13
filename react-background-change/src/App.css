@@ -61,3 +61,30 @@ h6 {
 .candle img {
   width: 100%;
 }
+
+.color_choose {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.choose {
+  width: 100px;
+  height: 100px;
+}
+
+.choose.red {
+  background-color: red;
+}
+
+.choose.green {
+  background-color: green;
+}
+
+.choose.yellow {
+  background-color: yellow;
+}
+
+.container.choosed_color {
+  min-height: 500px;
+}
