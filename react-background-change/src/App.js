@@ -3,6 +3,7 @@ import "./App.css";
 import RandomColor from "./components/RandomColor";
 import Candles from "./components/Candles";
 import ColorChange from "./components/ColorChange";
+import Popup from "./components/Popup";
 
 const App = () => {
   return (
@@ -10,6 +11,7 @@ const App = () => {
       <RandomColor />
       <Candles />
       <ColorChange />
+      <Popup />
     </div>
   );
 };
