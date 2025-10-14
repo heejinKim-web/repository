@@ -40,10 +40,10 @@ const ColorChange = () => {
 
   return (
     <div className="container">
-      <ul class="color_choose">
-        <div class="choose red" onClick={putRed}></div>
-        <div class="choose green" onClick={putGreen}></div>
-        <div class="choose yellow" onClick={putYellow}></div>
+      <ul className="color_choose">
+        <div className="choose red" onClick={putRed}></div>
+        <div className="choose green" onClick={putGreen}></div>
+        <div className="choose yellow" onClick={putYellow}></div>
       </ul>
       <div
         className="container choosed_color"
