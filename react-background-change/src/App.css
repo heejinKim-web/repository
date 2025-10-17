@@ -151,3 +151,11 @@ h6 {
   border: none;
   font-size: 24px;
 }
+
+.car_image {
+  max-width: 700px;
+}
+
+.car_image img {
+  width: 100%;
+}

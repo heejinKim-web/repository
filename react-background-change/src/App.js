@@ -5,6 +5,7 @@ import Candles from "./components/Candles";
 import ColorChange from "./components/ColorChange";
 import Popup from "./components/Popup";
 import TodoApp from "./components/TodoApp";
+import CarLight from "./components/CarLight";
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
       <ColorChange />
       <Popup />
       <TodoApp />
+      <CarLight />
     </div>
   );
 };
