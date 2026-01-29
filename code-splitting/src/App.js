@@ -1,7 +1,8 @@
 import { useState, useRef } from "react";
 import logo from "./logo.svg";
 import "./App.css";
-import Popup from "./Popup";
+import loadable from "@loadable/component";
+const Popup = loadable(() => import("./Popup"));
 
 function App() {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
@@ -18,11 +19,13 @@ function App() {
           <button onClick={onClick}>팝업열기</button>
         </header>
       </div>
-      <Popup
-        ref={ref}
-        isPopupOpen={isPopupOpen}
-        setIsPopupOpen={setIsPopupOpen}
-      />
+      {isPopupOpen && (
+        <Popup
+          ref={ref}
+          isPopupOpen={isPopupOpen}
+          setIsPopupOpen={setIsPopupOpen}
+        />
+      )}
     </>
   );
 }
