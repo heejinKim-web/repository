@@ -1,0 +1,42 @@
+.container {
+  max-width: 1400px;
+  width: 90%;
+  margin: 20px auto;
+}
+
+.radio_buttons ul {
+  margin: 0;
+  list-style: none;
+  display: flex;
+  padding: 0;
+  margin-bottom: 10px;
+}
+
+.radio_buttons ul li {
+  margin: 0 10px;
+}
+
+.radio_buttons ul li label {
+  font-size: 1rem;
+}
+
+.text_and_submit input[type="text"] {
+  display: block;
+  width: 250px;
+  margin-bottom: 10px;
+  border: 1px solid gray;
+  padding: 0;
+}
+
+.text_and_submit button {
+  display: block;
+  background: cornflowerblue;
+  border: none;
+  color: white;
+  width: 250px;
+  padding: 10px;
+}
+
+.in_outcome_list ul li .type {
+  margin-right: 10px;
+}
