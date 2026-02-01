@@ -1,11 +1,13 @@
 import React, { useState, useRef, useEffect } from "react";
 
 const TodoList = () => {
+  const [id, setId] = useState("1");
   const [todos, setTodos] = useState([]);
   const [date, setDate] = useState("");
   const [text, setText] = useState("");
   const [value, setValue] = useState("");
   const [category, setCategory] = useState("");
+  const [total, setTotal] = useState(0);
   const ref = useRef(null);
 
   const onDateChange = (e) => {
@@ -27,12 +29,27 @@ const TodoList = () => {
   const onSubmit = () => {
     setTodos([
       ...todos,
-      { date: date, value: value, category: category, text: text },
+      { id: id, date: date, value: value, category: category, text: text },
     ]);
-    console.log(typeof todos.text);
     setText("");
     ref.current.focus();
   };
+
+  useEffect(() => {
+    const signedNumbers = todos
+      .map((todo) => {
+        const raw = String(todo.text || "")
+          .replace(/,/g, "")
+          .trim();
+        const num = Number(raw);
+        if (!raw || Number.isNaN(num)) return null;
+        return todo.value === "지출" ? -num : num;
+      })
+      .filter((n) => n !== null);
+
+    const sum = signedNumbers.reduce((s, n) => s + n, 0);
+    setTotal(sum);
+  }, [todos]);
 
   return (
     <div className="container">
@@ -92,7 +109,7 @@ const TodoList = () => {
       <div className="in_outcome_list">
         <ul>
           {todos.map((todo) => (
-            <li>
+            <li key={todo.id}>
               <span className="date">{todo.date}</span>
               <span
                 className="type"
@@ -106,6 +123,7 @@ const TodoList = () => {
           ))}
         </ul>
       </div>
+      <p>합계 : {total}</p>
     </div>
   );
 };
