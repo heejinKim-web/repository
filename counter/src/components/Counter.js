@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { increamentRequest } from "../modules/counter";
+import { increamentRequest, decreamentRequest } from "../modules/counter";
 
 export default function Counter() {
   const count = useSelector((state) => state.counter.count);
@@ -8,6 +8,7 @@ export default function Counter() {
   return (
     <div>
       <p>{count}</p>
+      <button onClick={() => dispatch(decreamentRequest())}>- 1 </button>
       <button onClick={() => dispatch(increamentRequest())}>+ 1 </button>
     </div>
   );
