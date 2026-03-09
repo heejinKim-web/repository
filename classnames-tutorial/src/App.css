@@ -1,0 +1,37 @@
+.App {
+  text-align: center;
+}
+
+/*Graph*/
+.graph-container {
+  max-width: 500px;
+  margin: 0 auto;
+  margin-top: 30px;
+}
+
+.graph-inner-container .graph-item {
+  width: 10%;
+  background: lightgray;
+  height: 30px;
+  margin-bottom: 10px;
+}
+
+.graph-inner-container .graph-item.red {
+  background: red;
+  width: 30%;
+}
+
+.graph-inner-container .graph-item.green {
+  background: green;
+  width: 50%;
+}
+
+.graph-inner-container .graph-item.blue {
+  background: blue;
+  width: 70%;
+}
+
+.graph-inner-container .graph-item.yellow {
+  background: yellow;
+  width: 100%;
+}
