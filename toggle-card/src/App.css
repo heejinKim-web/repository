@@ -1,0 +1,48 @@
+.App {
+  text-align: center;
+}
+
+.card-toggle-frame {
+  width: 500px;
+  margin: 0 auto;
+  margin-top: 30px;
+}
+
+.toggle-button {
+  width: 50px;
+  height: 25px;
+  background: cornflowerblue;
+  border-radius: 25px;
+  position: relative;
+  margin-bottom: 10px;
+}
+
+.toggle-button-inner {
+  width: 20px;
+  height: 20px;
+  background: white;
+  border-radius: 50%;
+  position: absolute;
+  left: 2.5px;
+  top: 2.5px;
+}
+
+.toggle-button.toggled .toggle-button-inner {
+  left: unset;
+  right: 2.5px;
+}
+
+.card {
+  width: 200px;
+  height: 350px;
+  border-radius: 20px;
+  background: yellow;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card.card-toggled {
+  background: blueviolet;
+  color: white;
+}
