@@ -46,3 +46,39 @@
   background: blueviolet;
   color: white;
 }
+
+/*tab*/
+.tabs-container {
+  margin-top: 30px;
+  width: 500px;
+}
+
+.tab-list {
+}
+
+.tab {
+  width: 33.33%;
+  height: 30px;
+  background: white;
+  border: none;
+}
+
+.tab:last-child {
+  border-right: none;
+}
+
+.tab.active {
+  border: 5px solid blueviolet;
+}
+
+.tab-content {
+  border: 2px solid blueviolet;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tab-content.active {
+  background: lightblue;
+}
