@@ -1,0 +1,170 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap");
+
+* {
+  box-sizing: border-box;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+div,
+aside,
+footer,
+header,
+nav,
+section {
+  display: block;
+  box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+  padding: 0;
+  font-family: "Noto Sans KR", sans-serif;
+}
+a {
+  text-decoration: none;
+}
+
+ul,
+li {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.container {
+  width: 90%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.clear:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.section {
+  padding-top: 120px;
+}
+
+.section-title {
+  margin-bottom: 80px;
+  text-align: center;
+}
+
+.section-title h2 {
+  font-size: 54px;
+  color: #000;
+  font-weight: 900;
+}
+
+/*header*/
+.header {
+  background: #000;
+  padding: 15px 30px;
+  height: 100px;
+}
+
+/*slide*/
+.slide {
+  width: 100%;
+  position: relative;
+}
+
+.slide .slide-background {
+  width: 100%;
+}
+
+.slide-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  text-align: center;
+  transform: translate(-50%, -50%);
+}
+
+.slide-content h1 {
+  color: white;
+  font-size: 54px;
+  font-weight: 900;
+}
+
+.slide-content p {
+  color: white;
+  font-size: 26px;
+  font-weight: 300;
+}
+
+.swiper-horizontal > .swiper-pagination-bullets,
+.swiper-pagination-horizontal.swiper-pagination-bullets {
+  bottom: 100px !important;
+}
+
+.swiper-pagination-bullet {
+  width: 16px !important;
+  height: 16px !important;
+  background: #c2c2c2 !important;
+  margin: 0 8px !important;
+  opacity: 1 !important;
+}
+
+.swiper-pagination-bullet.swiper-pagination-bullet-active {
+  background: #0072bc !important;
+}
+
+/*band intro*/
+.band-intro-box {
+  padding: 85px 105px;
+  background: #eeeeee;
+  border-radius: 20px;
+  text-align: center;
+}
+
+.band-intro-box p {
+  font-size: 17px;
+  color: #000;
+  font-weight: 300;
+}
+
+/*albums*/
+
+.album-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.album-card {
+  width: calc(33.33% - 22px);
+  margin-right: 33px;
+  text-align: center;
+  padding: 40px 30px;
+  border-radius: 20px;
+  border: 1px solid #dfdfdf;
+  background: white;
+  margin-bottom: 33px;
+}
+
+.album-card:nth-child(3n) {
+  margin-right: 0;
+}
+
+.album-card:last-child {
+  margin-bottom: 0;
+}
+
+.album-card:hover {
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.4);
+}
+
+.album-title {
+  font-size: 25px;
+  color: black;
+  margin-top: 50px;
+  font-weight: 300;
+}
