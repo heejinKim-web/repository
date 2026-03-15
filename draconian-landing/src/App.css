@@ -235,3 +235,138 @@ li {
   font-size: 17px;
   font-weight: 300;
 }
+
+/*responsive*/
+@media (max-width: 1400px) {
+  .section {
+    padding-top: 80px;
+  }
+
+  .section-title {
+    margin-bottom: 50px;
+  }
+
+  .section-title h2 {
+    font-size: 34px;
+  }
+
+  .album-card {
+    width: calc(50% - 17px);
+  }
+
+  .album-card:nth-child(3n) {
+    margin-right: 33px;
+  }
+
+  .album-card:nth-child(2n) {
+    margin-right: 0;
+  }
+
+  .song-link .play-button + img {
+    width: 100%;
+  }
+}
+
+@media (max-width: 1050px) {
+  .album-card {
+    padding: 20px 20px;
+  }
+
+  .album-title {
+    margin-top: 20px;
+  }
+
+  .album-img img {
+    width: 100%;
+  }
+
+  .album-title {
+    font-size: 17px;
+  }
+
+  .songs-tab {
+    margin-bottom: 20px;
+  }
+
+  .songs-tab .button {
+    font-size: 17px;
+    height: 60px;
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    height: 60px;
+    padding: 10px 20px;
+  }
+
+  .header-logo {
+    width: 80px;
+    display: block;
+  }
+
+  .header-logo img {
+    width: 100%;
+  }
+
+  .slide-content h1 {
+    font-size: 26px;
+  }
+
+  .slide-content p {
+    font-size: 15px;
+  }
+
+  .swiper-horizontal > .swiper-pagination-bullets,
+  .swiper-pagination-horizontal.swiper-pagination-bullets {
+    bottom: 50px !important;
+  }
+
+  .band-intro-box p {
+    font-size: 15px;
+  }
+
+  .section {
+    padding-top: 50px;
+  }
+
+  .section-title {
+    margin-bottom: 30px;
+  }
+
+  .band-intro-box {
+    padding: 30px 30px;
+  }
+
+  .section-title h2 {
+    font-size: 26px;
+  }
+
+  .album-card {
+    width: 100%;
+    margin-right: 0;
+  }
+
+  .album-card:nth-child(3n) {
+    margin-right: 0;
+  }
+}
+
+@media (max-width: 420px) {
+  .swiper-horizontal > .swiper-pagination-bullets,
+  .swiper-pagination-horizontal.swiper-pagination-bullets {
+    bottom: 30px !important;
+  }
+
+  .songs-tab .button {
+    width: 50%;
+  }
+
+  .song-tab-content {
+    padding: 20px 0;
+  }
+
+  .song-link .play-button {
+    width: 50px;
+  }
+}
