@@ -1,6 +1,7 @@
 import CardToggle from "./components/CardToggle";
 import Tabs from "./components/Tabs";
 import Accordion from "./components/Accordion";
+import TrueFalse from "./components/TrueFalse";
 import "./App.css";
 
 function App() {
@@ -9,6 +10,7 @@ function App() {
       <CardToggle />
       <Tabs />
       <Accordion />
+      <TrueFalse />
     </div>
   );
 }

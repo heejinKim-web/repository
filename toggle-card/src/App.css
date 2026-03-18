@@ -123,3 +123,21 @@
   align-items: center;
   justify-content: center;
 }
+
+/*true false*/
+.text-container {
+  margin-top: 30px;
+  width: 500px;
+}
+
+.input.true {
+  color: blue;
+}
+
+.tfconditioner.true {
+  color: blue;
+}
+
+.tfconditioner.false {
+  color: red;
+}
