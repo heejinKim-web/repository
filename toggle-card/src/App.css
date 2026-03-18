@@ -141,3 +141,34 @@
 .tfconditioner.false {
   color: red;
 }
+
+/*car move*/
+.car-container {
+  width: 500px;
+  display: flex;
+  background: cornflowerblue;
+  margin-top: 30px;
+  align-items: center;
+  justify-content: center;
+}
+
+.buttons-container {
+  width: 500px;
+}
+
+.car {
+  width: 150px;
+  transition: all 1s ease-in-out;
+}
+
+.car img {
+  width: 100%;
+}
+
+.car.forward {
+  margin-left: -100px;
+}
+
+.car.backward {
+  margin-left: 100px;
+}
