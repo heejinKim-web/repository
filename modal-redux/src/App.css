@@ -1,0 +1,84 @@
+* {
+  box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+  padding: 0;
+}
+
+.album-container {
+  width: 90%;
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.album-item {
+  width: calc(33.33% - 20px);
+  margin: 0 10px;
+  border: 2px solid black;
+  padding: 20px;
+  cursor: pointer;
+}
+
+.album-item:hover,
+.album-item.active {
+  background: cornflowerblue;
+}
+
+.album-item img {
+  width: 100%;
+}
+
+.album-item p {
+  font-size: 17px;
+  margin-top: 10px;
+}
+
+/*modal*/
+.modal-background {
+  background: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  display: none;
+}
+
+.modal-background.open {
+  display: block;
+}
+
+.modal-container {
+  width: 80%;
+  max-width: 500px;
+  background: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  min-height: 300px;
+  padding: 30px;
+}
+
+.modal-relative {
+  position: relative;
+}
+
+.modal-close {
+  position: absolute;
+  top: -20px;
+  right: -20px;
+  background: none;
+  border: none;
+  font-size: 30px;
+}
