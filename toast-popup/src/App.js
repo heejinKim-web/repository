@@ -1,10 +1,10 @@
 import "./App.css";
-import ToastPopup from "./components/ToastPopup";
+import ToastPopupContainer from "./containers/ToastPopupContainer";
 
 function App() {
   return (
     <div className="App">
-      <ToastPopup />
+      <ToastPopupContainer />
     </div>
   );
 }

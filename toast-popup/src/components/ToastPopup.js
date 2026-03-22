@@ -1,17 +1,16 @@
-import React, { useState } from "react";
+import React from "react";
+import ToastPopupModal from "./ToastPopupModal";
 
-const ToastPopup = () => {
-  const [active, setActive] = useState(false);
-
+const ToastPopup = ({ isOpen, type, data, onOpen, onClose }) => {
   const handlePopup = () => {
-    setActive(true);
+    onOpen();
     setTimeout(() => {
-      setActive(false);
+      onClose();
     }, 3000);
   };
 
   const closePopup = () => {
-    setActive(false);
+    onClose();
   };
 
   return (
@@ -21,11 +20,8 @@ const ToastPopup = () => {
           Toast
         </button>
       </div>
-      {active === true && (
-        <div className="toast-popup">
-          <p>토스트 팝업을 띄웁니다.</p>
-          <button onClick={closePopup}>&times;</button>
-        </div>
+      {isOpen === true && (
+        <ToastPopupModal closePopup={closePopup} type={type} data={data} />
       )}
     </>
   );

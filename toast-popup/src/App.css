@@ -20,7 +20,7 @@
   padding: 0 20px;
   justify-content: flex-start;
   align-items: center;
-  animation: fadeInOut 2s forwards;
+  animation: fadeInOut 5s forwards;
 }
 
 .toast-popup p {
