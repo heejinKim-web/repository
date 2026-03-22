@@ -1,0 +1,56 @@
+.button-container {
+  width: 90%;
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+}
+
+.toast-popup {
+  width: 300px;
+  height: 30px;
+  background: lightskyblue;
+  position: fixed;
+  right: 10px;
+  top: 10px;
+  border-radius: 10px;
+  display: flex;
+  padding: 0 20px;
+  justify-content: flex-start;
+  align-items: center;
+  animation: fadeInOut 2s forwards;
+}
+
+.toast-popup p {
+  font-size: 12px;
+  color: darkblue;
+  margin: 0;
+  padding: 0;
+}
+
+.toast-popup button {
+  border: none;
+  background: none;
+  color: darkblue;
+  font-size: 12px;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
