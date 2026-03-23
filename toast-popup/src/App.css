@@ -41,6 +41,18 @@
   transform: translateY(-50%);
 }
 
+.toast-popup.alert-open {
+  background: lightsalmon;
+}
+
+.toast-popup.alert-open p {
+  color: red;
+}
+
+.toast-popup.alert-open button {
+  color: red;
+}
+
 @keyframes fadeInOut {
   0% {
     opacity: 0;

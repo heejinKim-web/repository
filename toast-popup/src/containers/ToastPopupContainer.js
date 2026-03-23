@@ -1,9 +1,9 @@
 import React from "react";
 import { connect } from "react-redux";
 import ToastPopup from "../components/ToastPopup";
-import { open, close } from "../modules/toastpopup";
+import { open, close, alert } from "../modules/toastpopup";
 
-const ToastPopupContainer = ({ isOpen, type, data, open, close }) => {
+const ToastPopupContainer = ({ isOpen, type, data, open, close, alert }) => {
   return (
     <ToastPopup
       isOpen={isOpen}
@@ -11,6 +11,7 @@ const ToastPopupContainer = ({ isOpen, type, data, open, close }) => {
       data={data}
       onOpen={open}
       onClose={close}
+      onAlert={alert}
     />
   );
 };
@@ -24,6 +25,9 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   open: () => {
     dispatch(open());
+  },
+  alert: () => {
+    dispatch(alert());
   },
   close: () => {
     dispatch(close());

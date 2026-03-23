@@ -4,7 +4,11 @@ import classnames from "classnames";
 const ToastPopupModal = ({ closePopup, type, data }) => {
   return (
     <div
-      className={classnames("toast-popup", type === "toast" && "toast-open")}
+      className={classnames(
+        "toast-popup",
+        type === "toast" && "toast-open",
+        type === "alert" && "alert-open",
+      )}
     >
       <p>{data}</p>
       <button onClick={closePopup}>&times;</button>
